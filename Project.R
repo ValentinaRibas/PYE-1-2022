@@ -13,24 +13,16 @@ b = rpois(10^3,lambda = 3.5)
 c = rpois(10^4,lambda = 3.5)
 d = rpois(10^5,lambda = 3.5)
 
-# Para graficar las 4 mustras en un mismo gráfico de cajas generamos un array
-# con los resultados
-#randomValues <- c(a,b,c,d)
-
-# agregamos un data.frame para identificar cada grÃ¡fico
-#data <- data.frame(values =randomValues,
-#group = c("10^2","10^3","10^4","10^5"))
-
 # Con boxplot generamos el gráfico de cajas agregado color para distiguir 
 # cada gráfico y borramos el eje "y" para agregar uno más exacto
 boxplot(#values ~ group,
   #data,
   a,b,c,d,
   col = c("pink",
-          "beige", 
-          "lightblue", 
-          "lightgreen"),
-  main = "Distribución binomial",
+          "red", 
+          "orange", 
+          "yellow"),
+  main = "Distribución de Poisson",
   xlab = "Muestras",
   ylab = "Valor variable aleatoria",
   yaxt='n')
@@ -176,7 +168,7 @@ espT = -4
 varT = 16
 
 # Al igual que con la distribuciÃ³n binomial, utilizamos "mean" para calcular
-# la esperanza empÃ­rica
+# la esperanza empirica
 espA = mean(a)
 espB = mean(b)
 espC = mean(c)
@@ -184,7 +176,7 @@ espD = mean(d)
 
 # Varianza Empirica
 # Al igual que con la distribuciÃ³n binomial, utilizamos "var" para calcular
-# la varianza teÃ³rica empÃ­rica
+# la varianza teÃ³rica empirica
 varA = var(a)
 varB = var(b)
 varC = var(c)
