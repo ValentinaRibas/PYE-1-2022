@@ -6,7 +6,7 @@
 #       size,  Numero de ensayos (> = 0)
 #       prob)  La probabilidad de éxito en cada ensayo
 
-# Generamos 4 constantes "a", "b", "c" y "d" aplicando la distribución binomial
+# Generamos 4 constantes "a", "b", "c" y "d" aplicando la distribución de poisson
 # para los tamaños de muestra 10^2, 10^3, 10^4 y 10^5 respectivamente
 a = rpois(10^2,lambda = 3.5)
 b = rpois(10^3,lambda = 3.5)
