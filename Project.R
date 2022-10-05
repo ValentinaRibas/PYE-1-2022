@@ -233,52 +233,56 @@ legend("topleft",
        lty = 1, col = c("grey","blue"), lwd =1, box.lty =1)
 
 # EJ 3
-# Distribuci√≥n Normal(-4,16)
+# Distribuci√≥n Exponencial(3.5)
 # PT 1) n = 10 ^ 3
 
-# Generamos una constante con valores aleatorios para la variable con distribuci√≥n normal
-a = rnorm(10^3,-4, sqrt(16)) 
-# Calculamos la media emp√≠rica de los valoreas aleatorias de a
-muEmp = mean(a) 
-# Guradamos la media te√≥rica 
-muTeo = -4
-# Guardamos desviaci√≥n estandar te√≥rica
-desvTeo = sqrt(16)
-# Valor estandarizado de mediana emp√≠rica
-medEsta = sqrt(1000) * ((muEmp - muTeo)/desvTeo)
+#Generar una muestra aleatoria simple de 1000 datos con Distribucion Exponencial (lambda=3,5)
+a = rexp(10^3,3.5)
+
+#Calcular la media empirica de la muestra
+muEmp = mean(a)
+
+#Media teorica y desvio estandar teorico
+muTeo = 0.285
+desvTeo = sd(a)
+
+#Hallar la media te¥orica, que llamaremos µ y la desviaci¥on est¥andar te¥orica, que llamaremos ??.
+medTeo = sqrt(10^3) * ((muEmp - muTeo)/desvTeo)
+
 
 # PT 2)
 
-# Para la parte 2 realizamos un loop for para realizar los calculos de la parte "A" y guardarlas en un array 
-promEst <- 0
-for(i in 1:500){
-  ab = rnorm(10^3,-4, sqrt(16))
-  muEmpb = mean(ab) 
-  promEst[i] <- sqrt(10^3) * ((muEmpb - muTeo)/desvTeo)
+#Repetir la Parte 1 k = 500 veces para obtener 500 valores del promedio estandarizado definido anteriormente.
+promedio <- 0
+for (i in 1:500) {
+  b = rexp(10^3,3.5)
+  muEmpb = mean(b)
+  promedio[i] <- sqrt(10^3) * ((muEmpb - muTeo)/desvTeo)
 }
 
-# Presentamos en un histograma los valores obtenidos en el loop
-s = seq(-4, 4, 0.1)
-hist(promEst,
-     main="Promedio estandarizados y distribuci√É¬≥n normal estandar",
-     breaks = 50,
-     xaxt="n",
+#Presentar los datos de estos k valores estandarizados en un histograma, y en el mismo gr·fico superpuesto presentar la funciÛn de densidad de la normal est·ndar
+hist(promedio,
+     main="Promedio estandarizados y distribucion normal estandar",
+     breaks = 30,
+     xaxt = "n",
      ylab="Densidad",
      xlab="x",
      freq=FALSE)
 
-# Sobre el histograma graficamos la densidad de la distribuci√≥n normal estandard
+s = seq (-3, 3, 0.25)
+
 lines(s, 
       dnorm(s, mean = 0, sd = 1),
       lty = 1, 
       lwd = 2)
+
 polygon(s, 
         dnorm(s, mean = 0, sd = 1), 
         col = rgb(1, 0, 0, alpha = 0.5))
-
-# Por √∫ltimo agregamos una leyenda para visualizar claramente los resultados  y cambiamos la escala del eje
 axis(1, at=s,las=1)
-legend("topleft", 
+legend("topright", 
        legend = c("Promedio estandarizado",
-                  "Distribuci√É¬≥n normal estandar"),
-       lty = 1, col = c("grey","red"), lwd =1, box.lty =1)
+                  "Distribucion normal estandar"),
+       lty = 1, col = c("blue","red"), lwd = 1, box.lty =1)
+
+
